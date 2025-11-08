@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: customers
+    description: "Customer data for ShopMart"
+    config:
+      materialized: view
+      schema: dbt
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: "Customer's first name"
+        tests:
+          - not_null
+      - name: last_name
+        description: "Customer's last name"
+        tests:
+          - not_null
+      - name: email
+        description: "Customer's email address"
+      - name: phone
+        description: "Customer's phone number"
+        tests:
+          - unique
+          - not_null
+  - name: orders
+    description: "Order data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "Identifier for the customer who placed the order"
+        tests:
+          - not_null
+      - name: order_date
+        description: "Date when the order was placed"
+        tests:
+          - not_null
+      - name: total_amount
+        description: "Total amount for the order"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1000000]
+  - name: deliveries
+    description: "Delivery data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt  
+  - name: employee
+    description: "Employee data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt
+  - name: inventory
+    description: "Inventory data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt
+  - name: marketing_campaigns
+    description: "Marketing campaign data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt
+  - name: payments
+    description: "Payment data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt
+  - name: product
+    description: "Product data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt 
+  - name: return
+    description: "Return data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt  
+  - name: warehouse
+    description: "Warehouse data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt

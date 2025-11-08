@@ -1,0 +1,30 @@
+version 2:
+
+sources:
+  - name: ent
+    schema: ent
+    tables:
+      - name: customer
+        description: "Table containing customer information"
+      - name: deliveries
+        description: "Table containing delivery details"
+      - name: employee
+        description: "Table containing employee information"
+      - name: inventory 
+        description: "Table containing inventory details"  
+        loaded_at_field: Last_Updated
+        freshness:
+          warn_after: {count: 2, period: hour}
+          error_after: {count: 4, period: hour}     
+      - name: marketing_campaigns
+        description: "Table containing marketing campaign information"
+      - name: orders
+        description: "Table containing order details" 
+      - name: payments
+        description: "Table containing payments information"
+      - name: product
+        description: "Table containing product details" 
+      - name: return
+        description: "Table containing return information"
+      - name: warehouse
+        description: "Table containing warehouse details"
