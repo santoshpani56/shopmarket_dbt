@@ -20,10 +20,8 @@ models:
         description: "Customer's last name"
         tests:
           - not_null
-      - name: email
+      - name: email       
         description: "Customer's email address"
-      - name: phone
-        description: "Customer's phone number"
         tests:
           - unique
           - not_null
@@ -46,17 +44,21 @@ models:
         description: "Date when the order was placed"
         tests:
           - not_null
-      - name: total_amount
-        description: "Total amount for the order"
+      - name: unit_price
+        description: "Unit price of the product ordered" 
         tests:
           - not_null
-          - accepted_values:
-              values: [0, 1000000]
   - name: deliveries
     description: "Delivery data for ShopMart"
     config:
       materialized: table
       schema: dbt  
+    columns:
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments: 
+                values: ['Returned', 'Cancelled', 'Delivered', 'In Transit']
   - name: employee
     description: "Employee data for ShopMart"
     config:
