@@ -94,3 +94,27 @@ models:
     config:
       materialized: table
       schema: dbt
+  - name: int_customer_orders
+    description: "Intermediate customer orders data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt
+
+  - name: int_inventory_status
+    description: "Intermediate inventory status data for ShopMart"
+    config:
+      materialized: table
+      schema: dbt
+
+  - name: int_payment_summary
+    description: "Pyamet with order status"
+    config:
+      materialized: table
+      schema: dbt
+
+  - name: int_return_analysis
+    description: "return information related return and product info"
+    config:
+      materialized: table
+      schema: dbt
+  
